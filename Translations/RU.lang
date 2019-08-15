@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Translations>
+  <ListOfAvailableQuests value="Список доступных квестов"/>
+  <ListOfQuestsTaken value="Список взятых квестов"/>
+  <ListOfCompletedQuests value="Список завершенных квестов"/>
+  <ListOfFailedQuests value="Список проваленных квестов"/>
+  <TakeTheQuest value="Взять квест"/>
+  <Back value="Назад"/>
+  <MainMenu value="Главное меню"/>
+  <OverallProgress value="Общий прогресс"/>
+  <SaveProfile value="Сохранить профиль"/>
+  <LoadProfile value="Загрузить профиль"/>
+  <QuestStarted value="[{0}]: Квест запущен!"/>
+  <QuestStopped value="[{0}]: Квест остановлен."/>
+  <QuestNotExistsInTaken value="Квест '{0}' не найден в списке полученных квестов в профиле."/>
+  <QuestNotContainsRewards value="Квест '{0}' не содержит наград."/>
+  <QuestCompleted value="Квест '{0}' успешно завершен."/>
+  <TakedReward value="Ты получили награду."/>
+  <TimeOutYouLose value="[{0}]: Время вышло, ты проиграл!"/>
+  <RemainingClicks value="Оставшиеся нажатия: {0}"/>
+  <TimeLeft value="Оставшееся время: {0} сек"/>
+  <IndexName value="Индекс: {0}"/>
+  <StartSelectionMode value="Запущен режим выбора квестов, введи индекс интересующего квеста, чтобы выбрать его."/>
+  <QuitSelectionMode value="Ты вышел из режима выбора квестов"/>
+  <CommandQuitSelectionMode value="{0} - Выход из режима выбора квестов."/>
+  <StartQuestCommand value="Выбор квеста для запуска."/>
+  <NoTakenQuests value="У тебя нету взятых квестов"/>
+  <PressAnyKey value="Нажми любую клавишу чтобы продолжить..."/>
+  <NoCompletedQuests value="У тебя нет выполненных квестов."/>
+  <NoFailedQuests value="У тебя нету проваленных квестов, и это хорошо!"/>
+  <SavingProfile value="Сохранение профиля..."/>
+  <SavingProfileCompleted value="Профиль '{0}' успешно сохранен!"/>
+  <SavingFailed value="При сохранении произошла ошибка: {0}"/>
+  <LoadingProfile value="Загрузка профиля..."/>
+  <LoadingProfileCompleted value="Профиль '{0}' успешно загружен!"/>
+  <LoadingFailed value="При загрузке произошла ошибка: {0}"/>
+  <NoProfilesForLoading value="Нету профилей для загрузки"/>
+  <ProfileWithIndexNotExists value="Профиль с индексом '{0}' не существует"/>
+  <SelectionProfileMode value="Запущен режим выбора профиля для загрузки, введи индекс профиля, чтобы загрузить его."/>
+  <CommandQuitSelectionProfileMode value="{0} - Выход из режима выбора профиля"/>
+  <SelectProfile value="Выбрать профиль для загрузки"/>
+  <ProfileNotSet value="Профиль не установлен"/>
+
+  <ChangeLanguage value="Изменить язык"/>
+  <CreateProfile value="Создать профиль"/>
+  <Continue value="Продолжить"/>
+  <WelcomeToApp value="Добро пожаловать в SimpleQuests!"/>
+  <AppInfo value="Это приложение было создано для демонстрации простых квестов и небольших деталей."/>
+  <YoureProfile value="Твой текущий профиль: {0}"/>
+  <MakeChoice value="Перед тем как продолжить, выбери все то, что тебя интересует."/>
+  <CantContinueWhileProfileNotCreatedOrLoaded value="Нельзя продолжить пока ты не создал или не загрузил профиль!"/>
+  <WriteUsername value="Напиши свое пользовательское имя для профиля"/>
+  <ProfileWasCreated value="Профиль был успешно создан"/>
+
+  <SelectLanguage value="Выбрать язык"/>
+  <SelectionLanguageMode value="Запущен режим выбора языка, введи индекс языка, чтобы выбрать его"/>
+  <CommandQuitSelectionLanguageMode value="{0} - Выход из режима выбора языка"/>
+  <SelectedLanguage value="Выбран язык '{0}'"/>
+  <LanguageWithIndexNotExists value="Язык с индексом '{0}' не существует"/>
+  <FailedBySelectLanguage value="Произошла ошибка при выборе языка: {0}"/>
+  <NoLanguages value="Нет доступных языков"/>
+
+  <!-- Stats -->
+  <CompletedQuests value="Завершено квестов: {0}"/>
+  <FailedQuests value="Провалено квестов: {0}"/>
+  <TakendQuests value="Взято квестов: {0}"/>
+
+  <EarnedCoins value="Заработано монеток: {0}"/>
+  <EarnedGolds value="Заработано золота: {0}"/>
+  <EarnedDiamonds value="Заработано алмазов: {0}"/>
+  <!-- End stats -->
+
+  <!-- Errors -->
+  <QuestIndexNotFound value="Квеста с индексом '{0}' не существует."/>
+  <QuestErrorByTaken value="При попытке получить квест произошла ошибка: {0}"/>
+  <InvalidInputData value="Неверные входные данные, попробуйте снова."/>
+  <CommandNotFound value="Команду под номером '{0}' не удалось найти в списке команд, попробуйте снова."/>
+  <FailedExecuteCommand value="Не удалось выполнить команду из-за ошибки: {0}"/>
+  <CannotRestartQuest value="Нельзя повторно запустить один и тот же квест."/>
+  <CantGiveUpRewardAgain value="Нельзя выдать повторно одну и ту же награду"/>
+  <CanStoppedAgainQuest value="Нельзя повторно остановить один и тот же квест."/>
+  <CurrentProfileIsNull value="Текущий профиль не установлен и является Null"/>
+  <!-- End errors -->
+
+  <!-- Specific quest -->
+  <PressKeyQuestName value="Нажимай на указанную клавишу"/>
+  <PressKeyQuestDescription value="Нажми '{0}' '{1}' раз, успей выполнить это за '{2}' сек"/>
+  <WriteWordQuestName value="Напиши указанное слово"/>
+  <WriteWordQuestDescription value="Успей написать '{0}' за {1} сек"/>
+  <!-- End specific quest -->
+
+  <Rewards value="Награды:"/>
+
+  <!-- Quest state -->
+  <QuestStateTaken value="Взято"/>
+  <QuestStateCompleted value="Завершено"/>
+  <QuestStateFailed value="Провалено"/>
+  <QuestStateInProgress value="В процессе"/>
+  <QuestStateAvailable value="Доступно"/>
+  <QuestStateUndefined value="Неопределено"/>
+  <!-- End quest state -->
+
+  <!-- Rewards -->
+  <NoRewards value="Нет наград"/>
+  <RewardGolds value="золота"/>
+  <RewardDiamonds value="алмазов"/>
+  <RewardCoins value="монеток"/>
+  <!-- End rewards -->
+
+  <WordNotEqual value="Введенное слово не похоже на нужное, попробуй снова!"/>
+</Translations>

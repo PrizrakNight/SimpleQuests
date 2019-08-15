@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Translations>
+  <ListOfAvailableQuests value="List of available quests"/>
+  <ListOfQuestsTaken value="List of quests taken"/>
+  <ListOfCompletedQuests value="List of completed quests"/>
+  <ListOfFailedQuests value="List of failed quests"/>
+  <TakeTheQuest value="Take the quest"/>
+  <Back value="Back"/>
+  <MainMenu value="Main menu"/>
+  <OverallProgress value="Overall progress"/>
+  <SaveProfile value="Save profile"/>
+  <LoadProfile value="Load profile"/>
+  <QuestStarted value="[{0}]: Quest started!"/>
+  <QuestStopped value="[{0}]: The quest is stopped."/>
+  <QuestNotExistsInTaken value="Quest '{0}' was not found in the list of received quests in the profile."/>
+  <QuestNotContainsRewards value="Quest '{0}' contains no rewards."/>
+  <QuestCompleted value="Quest '{0}' completed successfully."/>
+  <TakedReward value="You got a reward."/>
+  <TimeOutYouLose value="[{0}]: Time is up, you lost!"/>
+  <RemainingClicks value="Remaining clicks: {0}"/>
+  <TimeLeft value="Time Left: {0} sec"/>
+  <IndexName value="Index: {0}"/>
+  <StartSelectionMode value="The quest selection mode has been launched, enter the index of the quest of interest to select it."/>
+  <QuitSelectionMode value="You have left the quest selection mode"/>
+  <CommandQuitSelectionMode value="{0} - Exit the quest selection mode."/>
+  <StartQuestCommand value="Choosing a quest to run."/>
+  <NoTakenQuests value="You have no quests taken"/>
+  <PressAnyKey value="Press any key to continue ..."/>
+  <NoCompletedQuests value="You have no completed quests."/>
+  <NoFailedQuests value="You have no failed quests, and that's good!"/>
+  <SavingProfile value="Saving profile ..."/>
+  <SavingProfileCompleted value="Profile '{0}' saved successfully!"/>
+  <SavingFailed value="An error occurred while saving: {0}"/>
+  <LoadingProfile value="Loading profile ..."/>
+  <LoadingProfileCompleted value="Profile '{0}' successfully uploaded!"/>
+  <LoadingFailed value="An error occurred while loading: {0}"/>
+  <NoProfilesForLoading value="No profiles to download"/>
+  <ProfileWithIndexNotExists value="Profile with index '{0}' does not exist"/>
+  <SelectionProfileMode value="The mode for selecting a profile to load has been launched; enter the profile index to load it."/>
+  <CommandQuitSelectionProfileMode value="{0} - Exit profile selection mode"/>
+  <SelectProfile value="Select a profile to upload"/>
+  <ProfileNotSet value="Profile not set"/>
+
+  <ChangeLanguage value="Change the language"/>
+  <CreateProfile value="Create a profile"/>
+  <Continue value="Continue"/>
+  <WelcomeToApp value="Welcome to SimpleQuests!"/>
+  <AppInfo value="This application was created to demonstrate simple quests and small details."/>
+  <YoureProfile value="Your current profile: {0}"/>
+  <MakeChoice value="Before proceeding, choose everything that interests you."/>
+  <CantContinueWhileProfileNotCreatedOrLoaded value="You cannot continue until you have created or uploaded a profile!"/>
+  <WriteUsername value="Write your user name for the profile"/>
+  <ProfileWasCreated value="Profile was created successfully."/>
+
+  <SelectLanguage value="Choose language"/>
+  <SelectionLanguageMode value="The language selection mode is running, enter the language index to select it"/>
+  <CommandQuitSelectionLanguageMode value="{0} - Exit language selection mode"/>
+  <SelectedLanguage value="Selected language '{0}'"/>
+  <LanguageWithIndexNotExists value="Language with index '{0}' does not exist"/>
+  <FailedBySelectLanguage value="An error occurred while choosing the language: {0}"/>
+  <NoLanguages value="No languages ​​available"/>
+
+  <!-- Stats -->
+  <CompletedQuests value="Quests completed: {0}"/>
+  <FailedQuests value="Failed quests: {0}"/>
+  <TakendQuests value="Quests taken: {0}"/>
+
+  <EarnedCoins value="Earned Coins: {0}"/>
+  <EarnedGolds value="Earned Gold: {0}"/>
+  <EarnedDiamonds value="Earned Diamonds: {0}"/>
+  <!-- End stats -->
+
+  <!-- Errors -->
+  <QuestIndexNotFound value="Quest with index '{0}' does not exist."/>
+  <InvalidInputData value="Invalid input, try again."/>
+  <CommandNotFound value="The command number '{0}' could not be found in the list of commands, try again."/>
+  <FailedExecuteCommand value="The command could not be completed due to errors: {0}"/>
+  <CannotRestartQuest value="You cannot restart the same quest."/>
+  <CantGiveUpRewardAgain value="You cannot reissue the same award."/>
+  <CanStoppedAgainQuest value="You cannot stop the same quest again."/>
+  <CurrentProfileIsNull value="The current profile is not set and is Null"/>
+  <!-- End errors -->
+
+  <!-- Specific quest -->
+  <PressKeyQuestName value="Press the specified key"/>
+  <PressKeyQuestDescription value="Press '{0}' '{1}' times, complete it in '{2}' sec"/>
+  <WriteWordQuestName value="Write the specified word"/>
+  <WriteWordQuestDescription value="Hurry to write '{0}' in {1} sec"/>
+  <!-- End specific quest -->
+
+  <Rewards value="Rewards:"/>
+
+  <!-- Quest state -->
+  <QuestStateTaken value="Taken"/>
+  <QuestStateCompleted value="Completed"/>
+  <QuestStateFailed value="Failed"/>
+  <QuestStateInProgress value="In the process"/>
+  <QuestStateAvailable value="Available"/>
+  <QuestStateUndefined value="Undefined"/>
+  <!-- End quest state -->
+
+  <!-- Rewards -->
+  <NoRewards value="No rewards"/>
+  <RewardGolds value="golds"/>
+  <RewardDiamonds value="diamonds"/>
+  <RewardCoins value="coins"/>
+  <!-- End rewards -->
+
+  <WordNotEqual value="The word you entered does not seem to be the right one, try again!"/>
+</Translations>
