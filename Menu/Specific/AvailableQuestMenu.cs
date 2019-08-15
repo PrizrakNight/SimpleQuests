@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using SimpleQuests.Commands;
 using SimpleQuests.Localization;
@@ -11,7 +10,12 @@ namespace SimpleQuests.Menu.Specific
     {
         private readonly IQuestContainer _questContainer;
 
-        public AvailableQuestMenu(IQuestContainer questContainer) => _questContainer = questContainer;
+        public AvailableQuestMenu(IQuestContainer questContainer)
+        {
+            commands.Add(new NumericCommand(1, "TakeTheQuest", TakeQuest));
+
+            _questContainer = questContainer;
+        }
 
         protected override void Display()
         {
@@ -19,11 +23,6 @@ namespace SimpleQuests.Menu.Specific
 
             _questContainer.Print();
         }
-
-        protected override IEnumerable<NumericCommand> LoadCommands() => new[]
-        {
-            new NumericCommand(1, "TakeTheQuest", TakeQuest), 
-        };
 
         private void TakeQuest()
         {

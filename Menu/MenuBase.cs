@@ -16,16 +16,16 @@ namespace SimpleQuests.Menu
             Print();
         }
 
-        protected void GetInput(out int input)
+        protected int GetInput()
         {
-            if (int.TryParse(Console.ReadLine(), out int result)) input = result;
+            if (int.TryParse(Console.ReadLine(), out int result)) return result;
             else
             {
                 Refresh();
 
                 Console.WriteLine(LocalizationService.CurrentReader["InvalidInputData"]);
 
-                GetInput(out input);
+                return GetInput();
             }
         }
 

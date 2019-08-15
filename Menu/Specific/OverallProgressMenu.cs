@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using SimpleQuests.Commands;
 using SimpleQuests.Localization;
 
 namespace SimpleQuests.Menu.Specific
@@ -29,7 +27,5 @@ namespace SimpleQuests.Menu.Specific
             Console.WriteLine(LocalizationService.CurrentReader["EarnedDiamonds"]
                 .Replace("{0}", Profile.Current.Account.Diamonds.ToString()));
         }
-
-        protected override IEnumerable<NumericCommand> LoadCommands() => default;
     }
 }

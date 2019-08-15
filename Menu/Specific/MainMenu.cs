@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using SimpleQuests.Commands;
 using SimpleQuests.Localization;
@@ -10,18 +9,18 @@ namespace SimpleQuests.Menu.Specific
 {
     public class MainMenu : NumericCommandMenu
     {
+        public MainMenu()
+        {
+            commands.Add(new NumericCommand(1, "ListOfAvailableQuests", OpenAvailableQuestMenu));
+            commands.Add(new NumericCommand(2, "ListOfQuestsTaken", OpenTakenQuestMenu));
+            commands.Add(new NumericCommand(3, "ListOfCompletedQuests", OpenCompletedQuestMenu));
+            commands.Add(new NumericCommand(4, "ListOfFailedQuests", OpenFailedQuestMenu));
+            commands.Add(new NumericCommand(5, "OverallProgress", OpenProgressMenu));
+            commands.Add(new NumericCommand(6, "SaveProfile", SaveProfile));
+        }
+
         protected override void Display() =>
             Console.WriteLine($"-=-=-=-=-=|{LocalizationService.CurrentReader["MainMenu"]}|=-=-=-=-");
-
-        protected override IEnumerable<NumericCommand> LoadCommands() => new[]
-        {
-            new NumericCommand(1, "ListOfAvailableQuests", OpenAvailableQuestMenu),
-            new NumericCommand(2, "ListOfQuestsTaken", OpenTakenQuestMenu),
-            new NumericCommand(3, "ListOfCompletedQuests", OpenCompletedQuestMenu),
-            new NumericCommand(4, "ListOfFailedQuests", OpenFailedQuestMenu),
-            new NumericCommand(5, "OverallProgress", OpenProgressMenu),
-            new NumericCommand(6, "SaveProfile", SaveProfile)
-        };
 
         private void OpenFailedQuestMenu() => new FailedQuestsMenu().Print();
 

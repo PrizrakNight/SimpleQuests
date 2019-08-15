@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace SimpleQuests.Quests
 {
-    [DataContract, Serializable]
+    [Serializable]
     public abstract class CounterQuest : Quest<int>
     {
         public int Counter

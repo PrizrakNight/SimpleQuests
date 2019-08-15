@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using SimpleQuests.Commands;
 using SimpleQuests.Localization;
@@ -8,6 +7,8 @@ namespace SimpleQuests.Menu.Specific
 {
     public class TakenQuestsMenu : SubMenu<MainMenu>
     {
+        public TakenQuestsMenu() => commands.Add(new NumericCommand(1, "StartQuestCommand", StartQuest));
+
         protected override void Display()
         {
             Console.WriteLine($"-=-=-=-=|{LocalizationService.CurrentReader["ListOfQuestsTaken"]}|=-=-=-=-");
@@ -15,11 +16,6 @@ namespace SimpleQuests.Menu.Specific
             if (Profile.Current.TakenQuests.Count > 0) Profile.Current.TakenQuests.PrintQuestInfos();
             else Console.WriteLine(LocalizationService.CurrentReader["NoTakenQuests"]);
         }
-
-        protected override IEnumerable<NumericCommand> LoadCommands() => new NumericCommand[]
-        {
-            new NumericCommand(1, "StartQuestCommand", StartQuest), 
-        };
 
         private void StartQuest()
         {

@@ -8,28 +8,16 @@ namespace SimpleQuests.Menu
 {
     public abstract class NumericCommandMenu : MenuBase
     {
-        protected readonly HashSet<NumericCommand> commands;
-
-        public NumericCommandMenu()
-        {
-            IEnumerable<NumericCommand> loadedCommands = LoadCommands();
-
-            if (loadedCommands != default) commands = new HashSet<NumericCommand>(loadedCommands);
-            else commands = new HashSet<NumericCommand>();
-        }
+        protected HashSet<NumericCommand> commands = new HashSet<NumericCommand>();
 
         public override void Print()
         {
             Refresh();
 
-            GetInput(out int input);
-
-            ExecuteCommand(input);
+            ExecuteCommand(GetInput());
         }
 
         protected abstract void Display();
-
-        protected abstract IEnumerable<NumericCommand> LoadCommands();
 
         protected override void Refresh()
         {
@@ -54,9 +42,7 @@ namespace SimpleQuests.Menu
                 Console.WriteLine(LocalizationService.CurrentReader["CommandNotFound"]
                     .Replace("{0}", commandNumber.ToString()));
 
-                GetInput(out commandNumber);
-
-                ExecuteCommand(commandNumber);
+                ExecuteCommand(GetInput());
             }
         }
     }

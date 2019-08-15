@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using SimpleQuests.Localization;
 using SimpleQuests.Quests.Generator;
 
 namespace SimpleQuests.Quests
 {
-    [DataContract, Serializable]
+    [Serializable]
     public class QuestContainer : IQuestContainer
     {
-        [DataMember]
         public readonly int CountQuests = 15;
 
         public IQuestGenerator QuestGenerator { get; set; }
 
-        [DataMember]
         public ICollection<IQuest> AvailableQuests { get; private set; } = new HashSet<IQuest>();
 
         #region Constructors

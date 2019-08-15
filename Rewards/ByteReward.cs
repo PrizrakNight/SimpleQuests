@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace SimpleQuests.Rewards
 {
-    [DataContract, Serializable]
+    [Serializable]
     public abstract class ByteReward : RewardBase
     {
-        [DataMember]
         public readonly byte Count;
 
         public ByteReward(byte count) => Count = count;

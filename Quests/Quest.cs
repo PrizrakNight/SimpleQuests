@@ -8,21 +8,17 @@ using SimpleQuests.Rewards;
 
 namespace SimpleQuests.Quests
 {
-    [DataContract, Serializable]
+    [Serializable]
     public abstract class Quest<TValue> : IQuest, IEquatable<Quest<TValue>>
     {
         #region Properties
 
-        [DataMember]
         public string Name { get; set; }
 
-        [DataMember]
         public string Description { get; set; }
 
-        [DataMember]
         public QuestState State { get; set; } = QuestState.Available;
 
-        [DataMember]
         public IReward[] Rewards { get; set; }
 
         public bool IsStarted => State == QuestState.InProgress;

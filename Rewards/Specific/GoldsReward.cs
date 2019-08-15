@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using SimpleQuests.Localization;
 
 namespace SimpleQuests.Rewards.Specific
 {
-    [DataContract, Serializable]
+    [Serializable]
     public class GoldsReward : ByteReward
     {
         public GoldsReward(byte count) : base(count) { }

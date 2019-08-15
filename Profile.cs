@@ -1,31 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using SimpleQuests.Quests;
 
 namespace SimpleQuests
 {
-    [DataContract, Serializable]
+    [Serializable]
     public class Profile
     {
-        [DataMember]
         public readonly string Username;
 
-        [DataMember]
         public readonly DateTime Created;
 
-        [DataMember]
         public readonly Account Account = new Account();
 
-        [DataMember]
         public readonly List<IQuest> TakenQuests = new List<IQuest>();
 
-        [DataMember]
         public readonly List<IQuest> CompletedQuests = new List<IQuest>();
 
-        [DataMember]
         public readonly List<IQuest> FailedQuests = new List<IQuest>();
 
         public static Profile Current { get; private set; }
@@ -63,45 +56,23 @@ namespace SimpleQuests
 
         public static void CreateNew(string username) => Current = new Profile(username);
 
-        public static void Save(bool dataContract = false)
+        public static void Save()
         {
             using (FileStream stream = new FileStream($"Profiles/{Current.Username}.sdat", FileMode.Create))
             {
-                if (dataContract)
-                {
-                    DataContractSerializer serializer = new DataContractSerializer(typeof(Profile));
+                BinaryFormatter binary = new BinaryFormatter();
 
-                    serializer.WriteObject(stream, Current);
-                }
-                else
-                {
-                    BinaryFormatter binary = new BinaryFormatter();
-
-                    binary.Serialize(stream, Current);
-                }
+                binary.Serialize(stream, Current);
             }
         }
 
-        public static void Load(string username, bool dataContract = false)
+        public static void Load(string username)
         {
             using (FileStream stream = new FileStream($"Profiles/{username}.sdat", FileMode.Open))
             {
-                Profile profile;
+                BinaryFormatter binary = new BinaryFormatter();
 
-                if (dataContract)
-                {
-                    DataContractSerializer serializer = new DataContractSerializer(typeof(Profile));
-
-                    profile = (Profile) serializer.ReadObject(stream);
-                }
-                else
-                {
-                    BinaryFormatter binary = new BinaryFormatter();
-
-                    profile = (Profile) binary.Deserialize(stream);
-                }
-
-                Current = profile;
+                Current = (Profile) binary.Deserialize(stream);
             }
         }
     }

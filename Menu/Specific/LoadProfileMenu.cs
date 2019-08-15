@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -12,6 +11,8 @@ namespace SimpleQuests.Menu.Specific
     {
         private FileInfo[] _profilePaths;
 
+        public LoadProfileMenu() => commands.Add(new NumericCommand(1, "SelectProfile", SelectProfile));
+
         protected override void Display()
         {
             Console.WriteLine($"-=-=-=-=|{LocalizationService.CurrentReader["LoadProfile"]}|=-=-=-=-");
@@ -20,11 +21,6 @@ namespace SimpleQuests.Menu.Specific
 
             PrintProfiles();
         }
-
-        protected override IEnumerable<NumericCommand> LoadCommands() => new NumericCommand[]
-        {
-            new NumericCommand(1, "SelectProfile", SelectProfile), 
-        };
 
         private void SelectProfile()
         {

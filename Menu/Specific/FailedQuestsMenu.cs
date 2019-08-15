@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using SimpleQuests.Commands;
 using SimpleQuests.Localization;
 
 namespace SimpleQuests.Menu.Specific
@@ -14,7 +12,5 @@ namespace SimpleQuests.Menu.Specific
             if (Profile.Current.FailedQuests.Count > 0) Profile.Current.FailedQuests.PrintQuestInfos();
             else Console.WriteLine(LocalizationService.CurrentReader["NoFailedQuests"]);
         }
-
-        protected override IEnumerable<NumericCommand> LoadCommands() => default;
     }
 }

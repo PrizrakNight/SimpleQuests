@@ -1,10 +1,14 @@
-﻿using SimpleQuests.Commands;
+﻿using System.Collections.Generic;
+using SimpleQuests.Commands;
 
 namespace SimpleQuests.Menu
 {
     public abstract class SubMenu<TMenuOwner> : NumericCommandMenu where TMenuOwner : MenuBase, new()
     {
-        public SubMenu() : base() => commands.Add(new NumericCommand(0, "Back", MoveBack));
+        public SubMenu() => commands = new HashSet<NumericCommand>
+        {
+            new NumericCommand(0, "Back", MoveBack)
+        };
 
         protected virtual void OnBack() { }
 

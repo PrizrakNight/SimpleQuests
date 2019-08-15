@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using SimpleQuests.Localization;
 
 namespace SimpleQuests.Rewards.Specific
 {
-    [DataContract, Serializable]
+    [Serializable]
     public class CoinsReward : RewardBase
     {
-        [DataMember]
         public readonly int Count;
 
         public CoinsReward(int count) => Count = count;

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using SimpleQuests.Commands;
 using SimpleQuests.Localization;
@@ -8,6 +7,14 @@ namespace SimpleQuests.Menu.Specific
 {
     public class WelcomeMenu : NumericCommandMenu
     {
+        public WelcomeMenu()
+        {
+            commands.Add(new NumericCommand(1, "ChangeLanguage", ChangeLanguage));
+            commands.Add(new NumericCommand(2, "CreateProfile", CreateProfile));
+            commands.Add(new NumericCommand(3, "LoadProfile", LoadProfile));
+            commands.Add(new NumericCommand(4, "Continue", Continue));
+        }
+
         protected override void Display()
         {
             Console.WriteLine(LocalizationService.CurrentReader["WelcomeToApp"]);
@@ -20,14 +27,6 @@ namespace SimpleQuests.Menu.Specific
             Console.WriteLine(LocalizationService.CurrentReader["YoureProfile"].Replace("{0}", username));
             Console.WriteLine(LocalizationService.CurrentReader["MakeChoice"]);
         }
-
-        protected override IEnumerable<NumericCommand> LoadCommands() => new NumericCommand[]
-        {
-            new NumericCommand(1, "ChangeLanguage", ChangeLanguage), 
-            new NumericCommand(2, "CreateProfile", CreateProfile), 
-            new NumericCommand(3, "LoadProfile", LoadProfile),
-            new NumericCommand(4, "Continue", Continue), 
-        };
 
         private void ChangeLanguage() => new ChangeLanguageMenu<WelcomeMenu>().Print();
 

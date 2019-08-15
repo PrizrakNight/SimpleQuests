@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using SimpleQuests.Localization;
 
 namespace SimpleQuests.Quests.Specific
 {
-    [DataContract, Serializable]
+    [Serializable]
     public class WordQuest : Quest<string>, ITemporaryQuest
     {
-        [DataMember]
         public double Expire { get; set; }
 
         private DateTime _endTime;

@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using SimpleQuests.Localization;
 
 namespace SimpleQuests.Rewards
 {
-    [DataContract, Serializable]
+    [Serializable]
     public abstract class RewardBase : IReward
     {
-        [DataMember]
         public bool IsIssued { get; private set; }
 
         public void GiveOut()

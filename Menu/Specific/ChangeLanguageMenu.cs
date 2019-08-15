@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -12,6 +11,8 @@ namespace SimpleQuests.Menu.Specific
     {
         private string[] _languagePaths;
 
+        public ChangeLanguageMenu() => commands.Add(new NumericCommand(1, "SelectLanguage", SelectLanguage));
+
         protected override void Display()
         {
             Console.WriteLine($"-=-=-=-=|{LocalizationService.CurrentReader["SelectLanguage"]}|=-=-=-=-");
@@ -20,11 +21,6 @@ namespace SimpleQuests.Menu.Specific
 
             PrintLanguagePaths();
         }
-
-        protected override IEnumerable<NumericCommand> LoadCommands() => new NumericCommand[]
-        {
-            new NumericCommand(1, "SelectLanguage", SelectLanguage), 
-        };
 
         private void SelectLanguage()
         {

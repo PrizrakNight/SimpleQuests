@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using SimpleQuests.Localization;
 
 namespace SimpleQuests.Quests.Specific
 {
-    [DataContract, Serializable]
+    [Serializable]
     public class KeyDownQuest : CounterQuest, ITemporaryQuest
     {
         public int SecondsLeft => _endTime.Subtract(DateTime.Now).Seconds;
 
-        [DataMember]
         public double Expire { get; set; }
 
-        [DataMember]
         public readonly ConsoleKey Key;
 
         [NonSerialized]
