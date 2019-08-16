@@ -59,6 +59,7 @@
   <LanguageWithIndexNotExists value="Язык с индексом '{0}' не существует"/>
   <FailedBySelectLanguage value="Произошла ошибка при выборе языка: {0}"/>
   <NoLanguages value="Нет доступных языков"/>
+  <QuesAlreadyTaken value="Квест уже взят"/>
 
   <!-- Stats -->
   <CompletedQuests value="Завершено квестов: {0}"/>

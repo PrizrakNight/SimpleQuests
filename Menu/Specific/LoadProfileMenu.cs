@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using SimpleQuests.Commands;
 using SimpleQuests.Localization;
+using SimpleQuests.Modes;
 
 namespace SimpleQuests.Menu.Specific
 {
@@ -24,41 +25,35 @@ namespace SimpleQuests.Menu.Specific
 
         private void SelectProfile()
         {
-            Console.WriteLine(LocalizationService.CurrentReader["SelectionProfileMode"]);
-            Console.WriteLine(LocalizationService.CurrentReader["CommandQuitSelectionProfileMode"].Replace("{0}", "0"));
+            SelectionMode<FileInfo> selectionMode = new SelectionMode<FileInfo>(_profilePaths);
 
-            while (true)
+            selectionMode.OnLaunch += () =>
             {
-                if (int.TryParse(Console.ReadLine(), out int index))
-                {
-                    if(index == 0) break;
+                Console.WriteLine(LocalizationService.CurrentReader["SelectionProfileMode"]);
+                Console.WriteLine(LocalizationService.GetStringWithParam("CommandQuitSelectionProfileMode", 0));
+            };
 
-                    try
-                    {
-                        Console.WriteLine(LocalizationService.CurrentReader["LoadingProfile"]);
+            selectionMode.OnValid += fileInfo =>
+            {
+                Console.WriteLine(LocalizationService.CurrentReader["LoadingProfile"]);
 
-                        Profile.Load(Path.GetFileNameWithoutExtension(_profilePaths[index - 1].Name));
+                Profile.Load(Path.GetFileNameWithoutExtension(fileInfo.Name));
 
-                        Console.WriteLine(LocalizationService.CurrentReader["LoadingProfileCompleted"]
-                            .Replace("{0}", Profile.Current.Username));
+                Console.WriteLine(
+                    LocalizationService.GetStringWithParam("LoadingProfileCompleted", Profile.Current.Username));
 
-                        break;
-                    }
-                    catch (IndexOutOfRangeException)
-                    {
-                        Console.WriteLine(LocalizationService.CurrentReader["ProfileWithIndexNotExists"]
-                            .Replace("{0}", index.ToString()));
-                    }
-                    catch (Exception exception)
-                    {
-                        Console.WriteLine(LocalizationService.CurrentReader["LoadingFailed"]
-                            .Replace("{0}", exception.Message));
-                    }
-                }
-                else Console.WriteLine(LocalizationService.CurrentReader["InvalidInputData"]);
-            }
+                selectionMode.Stop();
+            };
 
-            ShowMenu();
+            selectionMode.OnIndexOut += index =>
+                Console.WriteLine(LocalizationService.GetStringWithParam("ProfileWithIndexNotExists", index));
+
+            selectionMode.OnError += exception =>
+                Console.WriteLine(LocalizationService.GetStringWithParam("LoadingFailed", exception.Message));
+
+            selectionMode.OnStop += ShowMenu;
+
+            selectionMode.Launch();
         }
 
         private void LoadProfilePaths()

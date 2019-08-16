@@ -30,6 +30,7 @@ namespace SimpleQuests
                 List<IQuest> result = new List<IQuest>(TakenQuests);
 
                 result.AddRange(CompletedQuests);
+                result.AddRange(FailedQuests);
 
                 return result;
             }

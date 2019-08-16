@@ -2,6 +2,8 @@
 using System.Threading;
 using SimpleQuests.Commands;
 using SimpleQuests.Localization;
+using SimpleQuests.Modes;
+using SimpleQuests.Quests;
 
 namespace SimpleQuests.Menu.Specific
 {
@@ -19,33 +21,24 @@ namespace SimpleQuests.Menu.Specific
 
         private void StartQuest()
         {
-            PrintMessage();
+            SelectionMode<IQuest> selectionMode = new SelectionMode<IQuest>(Profile.Current.TakenQuests.ToArray());
 
-            while (true)
-            {
-                if (int.TryParse(Console.ReadLine(), out int index))
-                {
-                    if(index == 0) break;
+            selectionMode.OnLaunch += PrintMessage;
 
-                    try
-                    {
-                        Profile.Current.TakenQuests[index - 1].Start();
-                    }
-                    catch
-                    {
-                        Console.WriteLine(LocalizationService.CurrentReader["QuestIndexNotFound"]
-                            .Replace("{0}", index.ToString()));
-                    }
-                }
-            }
+            selectionMode.OnIndexOut += index =>
+                Console.WriteLine(LocalizationService.GetStringWithParam("QuestIndexNotFound", index));
 
-            CloseSelectMode();
+            selectionMode.OnValid += quest => quest.Start();
+
+            selectionMode.OnStop += CloseSelectMode;
+
+            selectionMode.Launch();
         }
 
         private void PrintMessage()
         {
             Console.WriteLine(LocalizationService.CurrentReader["StartSelectionMode"]);
-            Console.WriteLine(LocalizationService.CurrentReader["CommandQuitSelectionMode"].Replace("{0}", "0"));
+            Console.WriteLine(LocalizationService.GetStringWithParam("CommandQuitSelectionMode", 0));
         }
 
         private void CloseSelectMode()

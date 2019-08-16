@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using SimpleQuests.Commands;
 using SimpleQuests.Localization;
+using SimpleQuests.Modes;
 
 namespace SimpleQuests.Menu.Specific
 {
@@ -24,42 +25,36 @@ namespace SimpleQuests.Menu.Specific
 
         private void SelectLanguage()
         {
-            Console.WriteLine(LocalizationService.CurrentReader["SelectionLanguageMode"]);
-            Console.WriteLine(LocalizationService.CurrentReader["CommandQuitSelectionLanguageMode"].Replace("{0}", "0"));
+            SelectionMode<string> selectionMode = new SelectionMode<string>(_languagePaths);
 
-            while (true)
+            selectionMode.OnLaunch += () =>
             {
-                if (int.TryParse(Console.ReadLine(), out int index))
-                {
-                    try
-                    {
-                        string path = _languagePaths[index - 1];
+                Console.WriteLine(LocalizationService.CurrentReader["SelectionLanguageMode"]);
+                Console.WriteLine(LocalizationService.GetStringWithParam("CommandQuitSelectionLanguageMode", 0));
+            };
 
-                        ILocalizationReader reader =
-                            LocalizationService.CreateReader<XmlLocalizationReader>(path);
+            selectionMode.OnValid += path =>
+            {
+                ILocalizationReader reader =
+                                LocalizationService.CreateReader<XmlLocalizationReader>(path);
 
-                        LocalizationService.SetReader(reader);
+                LocalizationService.SetReader(reader);
 
-                        Console.WriteLine(LocalizationService.CurrentReader["SelectedLanguage"]
-                            .Replace("{0}", Path.GetFileNameWithoutExtension(path)));
+                Console.WriteLine(LocalizationService.GetStringWithParam("SelectedLanguage",
+                    Path.GetFileNameWithoutExtension(path)));
 
-                        break;
-                    }
-                    catch (IndexOutOfRangeException)
-                    {
-                        Console.WriteLine(LocalizationService.CurrentReader["LanguageWithIndexNotExists"]
-                            .Replace("{0}", index.ToString()));
-                    }
-                    catch (Exception exception)
-                    {
-                        Console.WriteLine(LocalizationService.CurrentReader["FailedBySelectLanguage"]
-                            .Replace("{0}", exception.Message));
-                    }
-                }
-                else Console.WriteLine(LocalizationService.CurrentReader["InvalidInputData"]);
-            }
+                selectionMode.Stop();
+            };
 
-            ShowMenu();
+            selectionMode.OnIndexOut += index =>
+                Console.WriteLine(LocalizationService.GetStringWithParam("LanguageWithIndexNotExists", index));
+
+            selectionMode.OnError += exception =>
+                Console.WriteLine(LocalizationService.GetStringWithParam("FailedBySelectLanguage", exception.Message));
+
+            selectionMode.OnStop += ShowMenu;
+
+            selectionMode.Launch();
         }
 
         private void LoadLanguagePaths()
@@ -74,9 +69,8 @@ namespace SimpleQuests.Menu.Specific
             if (_languagePaths != default && _languagePaths.Length > 0)
             {
                 for (int i = 0; i < _languagePaths.Length; i++)
-                    Console.WriteLine(
-                        $"[{LocalizationService.CurrentReader["IndexName"].Replace("{0}", (i + 1).ToString())}]: " +
-                        Path.GetFileNameWithoutExtension(_languagePaths[i]));
+                    Console.WriteLine($"[{LocalizationService.GetStringWithParam("IndexName", i + 1)}]: " +
+                                      Path.GetFileNameWithoutExtension(_languagePaths[i]));
             }
             else Console.WriteLine(LocalizationService.CurrentReader["NoLanguages"]);
         }

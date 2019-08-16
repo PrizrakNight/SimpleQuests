@@ -25,17 +25,13 @@ namespace SimpleQuests.Quests.Specific
 
         public override void DisplayInfo()
         {
-            Console.WriteLine(LocalizedDescription
-                .Replace("{0}", Key.ToString())
-                .Replace("{1}", value.ToString())
-                .Replace("{2}", Expire.ToString()));
+            Console.WriteLine(LocalizationService.GetStringWithParams(Description, Key, value, Expire));
 
             if (IsStarted)
             {
-                Console.WriteLine(LocalizationService.CurrentReader["RemainingClicks"]
-                    .Replace("{0}", (value - current).ToString()));
+                Console.WriteLine(LocalizationService.GetStringWithParam("RemainingClicks", value - current));
 
-                Console.WriteLine(LocalizationService.CurrentReader["TimeLeft"].Replace("{0}", SecondsLeft.ToString()));
+                Console.WriteLine(LocalizationService.GetStringWithParam("TimeLeft", SecondsLeft));
             }
         }
 
@@ -57,7 +53,7 @@ namespace SimpleQuests.Quests.Specific
         {
             if (DateTime.Now > _endTime)
             {
-                Console.WriteLine(LocalizationService.CurrentReader["TimeOutYouLose"].Replace("{0}", LocalizedName));
+                Console.WriteLine(LocalizationService.GetStringWithParam("TimeOutYouLose", LocalizedName));
                 Stop();
             }
             else base.Adjust();

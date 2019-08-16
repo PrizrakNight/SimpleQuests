@@ -39,8 +39,7 @@ namespace SimpleQuests.Menu
             {
                 Refresh();
 
-                Console.WriteLine(LocalizationService.CurrentReader["CommandNotFound"]
-                    .Replace("{0}", commandNumber.ToString()));
+                Console.WriteLine(LocalizationService.GetStringWithParam("CommandNotFound", commandNumber));
 
                 ExecuteCommand(GetInput());
             }

@@ -9,8 +9,6 @@ namespace SimpleQuests.Quests
 
         ICollection<IQuest> AvailableQuests { get; }
 
-        bool TakeQuest(int index);
-
         void Refill();
     }
 }

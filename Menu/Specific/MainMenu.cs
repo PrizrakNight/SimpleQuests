@@ -45,7 +45,7 @@ namespace SimpleQuests.Menu.Specific
             }
             catch(Exception exception)
             {
-                Console.WriteLine(LocalizationService.CurrentReader["SavingFailed"].Replace("{0}", exception.Message));
+                Console.WriteLine(LocalizationService.GetStringWithParam("SavingFailed", exception.Message));
             }
 
             Thread.Sleep(1000);

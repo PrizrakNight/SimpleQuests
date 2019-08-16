@@ -18,20 +18,18 @@ namespace SimpleQuests.Quests.Specific
 
         public override void DisplayInfo()
         {
-            Console.WriteLine(LocalizedDescription
-                .Replace("{0}", value)
-                .Replace("{1}", Expire.ToString()));
+            Console.WriteLine(LocalizationService.GetStringWithParams(Description, value, Expire));
 
             if (IsStarted)
-                Console.WriteLine(LocalizationService.CurrentReader["TimeLeft"]
-                    .Replace("{0}", _endTime.Subtract(DateTime.Now).Seconds.ToString()));
+                Console.WriteLine(
+                    LocalizationService.GetStringWithParam("TimeLeft", _endTime.Subtract(DateTime.Now).Seconds));
         }
 
         protected override void Adjust()
         {
             if (DateTime.Now > _endTime)
             {
-                Console.WriteLine(LocalizationService.CurrentReader["TimeOutYouLose"].Replace("{0}", LocalizedName));
+                Console.WriteLine(LocalizationService.GetStringWithParam("TimeOutYouLose", LocalizedName));
                 Stop();
             }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 
 namespace SimpleQuests.Localization
 {
@@ -27,6 +26,10 @@ namespace SimpleQuests.Localization
             OnReaderChanged?.Invoke(localizationReader);
         }
 
-        public static string[] GetAvailableLanguages() => Directory.GetFiles("Translations");
+        public static string GetStringWithParam(string key, object param) =>
+            CurrentReader[key].Replace("{0}", param.ToString());
+
+        public static string GetStringWithParams(string key, params object[] objects) =>
+            string.Format(CurrentReader[key], objects);
     }
 }

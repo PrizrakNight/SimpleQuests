@@ -24,7 +24,7 @@ namespace SimpleQuests.Menu.Specific
                 ? Profile.Current.Username
                 : LocalizationService.CurrentReader["ProfileNotSet"];
 
-            Console.WriteLine(LocalizationService.CurrentReader["YoureProfile"].Replace("{0}", username));
+            Console.WriteLine(LocalizationService.GetStringWithParam("YoureProfile", username));
             Console.WriteLine(LocalizationService.CurrentReader["MakeChoice"]);
         }
 

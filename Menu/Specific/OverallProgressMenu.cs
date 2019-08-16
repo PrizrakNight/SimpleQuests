@@ -9,23 +9,21 @@ namespace SimpleQuests.Menu.Specific
         {
             Console.WriteLine($"-=-=-=-=|{LocalizationService.CurrentReader["OverallProgress"]}|=-=-=-=-");
 
-            Console.WriteLine(LocalizationService.CurrentReader["CompletedQuests"]
-                .Replace("{0}", Profile.Current.CompletedQuests.Count.ToString()));
+            Console.WriteLine(
+                LocalizationService.GetStringWithParam("CompletedQuests", Profile.Current.CompletedQuests.Count));
 
-            Console.WriteLine(LocalizationService.CurrentReader["FailedQuests"]
-                .Replace("{0}", Profile.Current.FailedQuests.Count.ToString()));
+            Console.WriteLine(
+                LocalizationService.GetStringWithParam("FailedQuests", Profile.Current.FailedQuests.Count));
 
-            Console.WriteLine(LocalizationService.CurrentReader["TakendQuests"]
-                .Replace("{0}", Profile.Current.TakenQuests.Count.ToString()));
+            Console.WriteLine(
+                LocalizationService.GetStringWithParam("TakendQuests", Profile.Current.TakenQuests.Count));
 
-            Console.WriteLine(LocalizationService.CurrentReader["EarnedCoins"]
-                .Replace("{0}", Profile.Current.Account.Coins.ToString()));
+            Console.WriteLine(LocalizationService.GetStringWithParam("EarnedCoins", Profile.Current.Account.Coins));
 
-            Console.WriteLine(LocalizationService.CurrentReader["EarnedGolds"]
-                .Replace("{0}", Profile.Current.Account.Golds.ToString()));
+            Console.WriteLine(LocalizationService.GetStringWithParam("EarnedGolds", Profile.Current.Account.Golds));
 
-            Console.WriteLine(LocalizationService.CurrentReader["EarnedDiamonds"]
-                .Replace("{0}", Profile.Current.Account.Diamonds.ToString()));
+            Console.WriteLine(
+                LocalizationService.GetStringWithParam("EarnedDiamonds", Profile.Current.Account.Diamonds));
         }
     }
 }

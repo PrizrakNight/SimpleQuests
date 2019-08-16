@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using SimpleQuests.Localization;
 using SimpleQuests.Quests.Generator;
 
 namespace SimpleQuests.Quests
@@ -36,36 +34,6 @@ namespace SimpleQuests.Quests
         #endregion
 
         #region Methods_PUBLIC
-
-        public bool TakeQuest(int index)
-        {
-            try
-            {
-                IQuest needle = AvailableQuests.ElementAt(index);
-
-                if (needle.State != QuestState.Taken)
-                {
-                    Profile.Current.AddQuest(needle);
-
-                    this.UpdatePrint();
-
-                    return true;
-                }
-                else Console.WriteLine("Нельзя взять квест, который был ранее взят.");
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                Console.WriteLine(LocalizationService.CurrentReader["QuestIndexNotFound"]
-                    .Replace("{0}", index.ToString()));
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(LocalizationService.CurrentReader["QuestErrorByTaken"]
-                    .Replace("{0}", exception.Message));
-            }
-
-            return false;
-        }
 
         public void Print() => AvailableQuests.PrintQuestInfos();
 

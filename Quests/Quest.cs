@@ -56,7 +56,7 @@ namespace SimpleQuests.Quests
             if (IsStarted)
                 throw new InvalidOperationException(LocalizationService.CurrentReader["CannotRestartQuest"]);
 
-            Console.WriteLine(LocalizationService.CurrentReader["QuestStarted"].Replace("{0}", LocalizedName));
+            Console.WriteLine(LocalizationService.GetStringWithParam("QuestStarted", LocalizedName));
 
             Task.Factory.StartNew(UpdaterInfo);
 
@@ -70,7 +70,7 @@ namespace SimpleQuests.Quests
             if (!IsStarted)
                 throw new InvalidOperationException(LocalizationService.CurrentReader["CanStoppedAgainQuest"]);
 
-            Console.WriteLine(LocalizationService.CurrentReader["QuestStopped"].Replace("{0}", LocalizedName));
+            Console.WriteLine(LocalizationService.GetStringWithParam("QuestStopped", LocalizedName));
 
             State = QuestState.Failed;
 
@@ -87,8 +87,8 @@ namespace SimpleQuests.Quests
         public void GiveOutRewards()
         {
             if (!HasRewards)
-                throw new InvalidOperationException(LocalizationService.CurrentReader["QuestNotContainsRewards"]
-                    .Replace("{0}", LocalizedName));
+                throw new InvalidOperationException(
+                    LocalizationService.GetStringWithParam("QuestNotContainsRewards", LocalizedName));
 
             for (int i = 0; i < Rewards.Length; i++) Rewards[i].GiveOut();
         }
@@ -113,7 +113,7 @@ namespace SimpleQuests.Quests
 
         protected void SetCompleted()
         {
-            Console.WriteLine(LocalizationService.CurrentReader["QuestCompleted"].Replace("{0}", LocalizedName));
+            Console.WriteLine(LocalizationService.GetStringWithParam("QuestCompleted", LocalizedName));
 
             State = QuestState.Completed;
 
@@ -140,8 +140,8 @@ namespace SimpleQuests.Quests
                 throw new NullReferenceException(LocalizationService.CurrentReader["CurrentProfileIsNull"]);
 
             if (!Profile.Current.TakenQuests.Contains(this))
-                throw new InvalidOperationException(LocalizationService.CurrentReader["QuestNotExistsInTaken"]
-                    .Replace("{0}", LocalizedName));
+                throw new InvalidOperationException(
+                    LocalizationService.GetStringWithParam("QuestNotExistsInTaken", LocalizedName));
 
             Profile.Current.TakenQuests.Remove(this);
 
@@ -161,7 +161,7 @@ namespace SimpleQuests.Quests
 
         private void ShowMenu()
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
 
             new TakenQuestsMenu().Print();
         }

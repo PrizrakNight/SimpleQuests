@@ -59,6 +59,7 @@
   <LanguageWithIndexNotExists value="Language with index '{0}' does not exist"/>
   <FailedBySelectLanguage value="An error occurred while choosing the language: {0}"/>
   <NoLanguages value="No languages ​​available"/>
+  <QuesAlreadyTaken value="Quest already taken"/>
 
   <!-- Stats -->
   <CompletedQuests value="Quests completed: {0}"/>
@@ -73,6 +74,7 @@
   <!-- Errors -->
   <QuestIndexNotFound value="Quest with index '{0}' does not exist."/>
   <InvalidInputData value="Invalid input, try again."/>
+  <QuestErrorByTaken value="An error occurred while trying to get the quest: {0}"/>
   <CommandNotFound value="The command number '{0}' could not be found in the list of commands, try again."/>
   <FailedExecuteCommand value="The command could not be completed due to errors: {0}"/>
   <CannotRestartQuest value="You cannot restart the same quest."/>

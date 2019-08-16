@@ -29,8 +29,7 @@ namespace SimpleQuests.Commands
             }
             catch (Exception exception)
             {
-                Console.WriteLine(LocalizationService.CurrentReader["FailedExecuteCommand"]
-                    .Replace("{0}", exception.Message));
+                Console.WriteLine(LocalizationService.GetStringWithParam("FailedExecuteCommand", exception.Message));
             }
         }
     }

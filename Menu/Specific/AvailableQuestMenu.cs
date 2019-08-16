@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using SimpleQuests.Commands;
 using SimpleQuests.Localization;
+using SimpleQuests.Modes;
 using SimpleQuests.Quests;
 
 namespace SimpleQuests.Menu.Specific
@@ -26,30 +28,36 @@ namespace SimpleQuests.Menu.Specific
 
         private void TakeQuest()
         {
-            PrintMessage();
+            SelectionMode<IQuest> selectionMode = new SelectionMode<IQuest>(_questContainer.AvailableQuests.ToArray());
 
-            while (true)
+            selectionMode.OnLaunch += PrintMessage;
+            selectionMode.OnStop += CloseSelectMode;
+
+            selectionMode.OnIndexOut += index =>
+                Console.WriteLine(LocalizationService.GetStringWithParam("QuestIndexNotFound", index));
+
+            selectionMode.OnError += exception =>
+                Console.WriteLine(LocalizationService.GetStringWithParam("QuestErrorByTaken", exception.Message));
+
+            selectionMode.OnValid += quest =>
             {
-                if (int.TryParse(Console.ReadLine(), out int index))
+                if (quest.State != QuestState.Taken)
                 {
-                    if (index == 0) break;
+                    Profile.Current.AddQuest(quest);
 
-                    if (_questContainer.TakeQuest(index - 1))
-                    {
-                        Refresh();
-                        PrintMessage();
-                    }
+                    Refresh();
+                    PrintMessage();
                 }
-                else Console.WriteLine(LocalizationService.CurrentReader["InvalidInputData"]);
-            }
+                else Console.WriteLine(LocalizationService.CurrentReader["QuesAlreadyTaken"]);
+            };
 
-            CloseSelectMode();
+            selectionMode.Launch();
         }
 
         private void PrintMessage()
         {
             Console.WriteLine(LocalizationService.CurrentReader["StartSelectionMode"]);
-            Console.WriteLine(LocalizationService.CurrentReader["CommandQuitSelectionMode"].Replace("{0}", "0"));
+            Console.WriteLine(LocalizationService.GetStringWithParam("CommandQuitSelectionMode", 0));
         }
 
         private void CloseSelectMode()
